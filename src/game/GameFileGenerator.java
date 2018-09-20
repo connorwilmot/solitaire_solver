@@ -23,7 +23,6 @@ public class GameFileGenerator {
 			System.out.println("Error with I/O");
 		}
 		input.close();
-		System.out.println();
 	}
 	
 }
