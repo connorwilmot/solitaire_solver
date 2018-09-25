@@ -1,7 +1,5 @@
 package game;
 
-import structures.Card;
-
 public class Move {
 	
 	private byte from;

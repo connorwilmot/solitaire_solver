@@ -1,4 +1,4 @@
-package structures;
+package game;
 
 import java.util.Iterator;
 import java.util.LinkedList;

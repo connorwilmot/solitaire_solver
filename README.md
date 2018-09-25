@@ -4,4 +4,4 @@ The code is organized into four packages: game, heuristics, solvers, and structu
 -game: 			contains code for playing a solitaire game, including game state, moves, and generating games
 -heuristics:	contains search heuristics for solitaire game states. The heuristics generally give a minimum 				number of moves necessary to win a particular game.
 -solvers:		contains search algorithms for solving games
--structures:	contains the base elements of a solitaire game, and auxiliary structures.
+-structures:	auxiliary structures.

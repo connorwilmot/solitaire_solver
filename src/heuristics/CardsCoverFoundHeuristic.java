@@ -2,11 +2,11 @@ package heuristics;
 
 import java.util.LinkedList;
 
+import game.Card;
+import game.Cascade;
+import game.Foundation;
 import game.Move;
 import game.Solitaire;
-import structures.Card;
-import structures.Cascade;
-import structures.Foundation;
 import structures.Pair;
 
 public class CardsCoverFoundHeuristic extends SolitaireHeuristic {

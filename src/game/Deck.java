@@ -1,11 +1,11 @@
-package structures;
+package game;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
-import structures.Card.Suit;
+import game.Card.Suit;
 
 public class Deck implements Iterable<Card>, Cloneable{
 

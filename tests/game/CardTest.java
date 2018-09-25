@@ -1,9 +1,10 @@
-package structures;
+package game;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import structures.Card.Suit;
+import game.Card;
+import game.Card.Suit;
 
 public class CardTest {
 

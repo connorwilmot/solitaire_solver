@@ -1,10 +1,5 @@
 package game;
 
-import structures.Card;
-import structures.Cells;
-import structures.Deck;
-import structures.Foundation;
-import structures.Cascade;
 import java.util.ArrayList;
 import java.util.HashSet;
 
