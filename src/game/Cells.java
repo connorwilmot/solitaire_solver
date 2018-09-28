@@ -1,4 +1,9 @@
 package game;
+/* represents the free cells in a solitaire game. A linked list is used as insertion and deletion is quite common,
+ * and a hashset would take up too much space with so few elements. Insertion and deletion by position are not
+ * supported. it contains three constructors, one which initializes an empty list, another which
+ * uses a string representing some cells to create a list, and another which does a shallow copy of some cells
+ */
 
 import java.util.Iterator;
 import java.util.LinkedList;
