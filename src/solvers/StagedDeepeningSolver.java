@@ -1,4 +1,9 @@
 package solvers;
+/* variation of best first search solver where instead of adding games to openlist which are a move away, it does
+ * a depth limited search with each game that is taken off the list, adding games which are exactly the depth limit
+ * away in moves to the openlist. Has different methods depending on whether or not the search is done with
+ * pruning or memory.
+ */
 
 import java.util.ArrayList;
 import java.util.HashSet;

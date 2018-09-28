@@ -1,4 +1,8 @@
 package solvers;
+/* base class for solitaire solver. Has options for pruning, max depth, and the number of games remembered.
+ * the main method is solve, which calls 8 different methods depending on the combination of options used. these
+ * method must be implemented by subclasses, as must initialize and reset.
+ */
 
 import game.Solitaire;
 import game.Move;

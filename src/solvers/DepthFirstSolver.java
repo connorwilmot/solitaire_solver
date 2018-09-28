@@ -1,4 +1,7 @@
 package solvers;
+/* an implementation of a solitaire solver using a depth first search. different methods allow the search to be
+ * limited in depth, to have memory of games seen, or to be pruned
+ */
 
 import java.util.ArrayList;
 import java.util.HashSet;
