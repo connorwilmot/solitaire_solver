@@ -1,4 +1,7 @@
 package heuristics;
+/* heuristic which calculates the number of cards covering each card that must be put on the foundation next.
+ * This is a minimum number of moves which must be made in order to advance the game
+ */
 
 import java.util.LinkedList;
 
