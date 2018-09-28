@@ -1,7 +1,8 @@
 package game;
 /* this class represents a cascade in solitaire. It is basically a wrapper for the ArrayDeque class which
  * is used as a stack. it contains three constructors, one which initializes an empty deque, another which
- * uses a string representing a cascade to create a deque, and another which does a shallow copy of a cascade
+ * uses a string representing a cascade to create a deque where left to right on the string represents top
+ * to bottom of the deque, and another which does a shallow copy of a cascade
  */
 
 import java.util.ArrayDeque;
