@@ -1,4 +1,6 @@
 package heuristics;
+/* this heuristic just counts the numbers of cards not placed on the foundation.
+ */
 
 import java.util.LinkedList;
 

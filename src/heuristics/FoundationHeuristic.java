@@ -1,4 +1,7 @@
 package heuristics;
+/* this heuristic combines CardsCoverFoundHeuristic and FoundCardsLeftHeuristic by choosing the maximum of the two
+ * as it is guaranteed no game can be completed in less moves.
+ */
 
 import java.util.LinkedList;
 
