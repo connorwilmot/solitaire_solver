@@ -32,21 +32,21 @@ public class SolverDriver {
 			Solitaire game = new Solitaire(inputString);
 			System.out.print("enter a maximum depth: ");
 			int maxDepth = input.nextInt();
-			System.out.print("enter memory limit: ");
-			int maxPrev = input.nextInt();
-			System.out.print("enter depth for dls: ");
-			int dlsDepth = input.nextInt();
-			boolean prunes;
 			System.out.print("enter a negative integer to not prune: ");
+			boolean prunes;
 			if(input.nextInt()<0) {
 				prunes = false;
 			}
 			else {
 				prunes = true;
 			}
+			System.out.print("enter memory limit: ");
+			int maxPrev = input.nextInt();
+			System.out.print("enter depth for dls: ");
+			int dlsDepth = input.nextInt();
 			FoundationHeuristic fhueristic = new FoundationHeuristic();
 			StagedDeepeningSolver gameSolver = 
-					new StagedDeepeningSolver(maxDepth, maxPrev, prunes, dlsDepth, fhueristic);
+					new StagedDeepeningSolver(maxDepth, prunes, maxPrev, dlsDepth, fhueristic);
 			String moves = gameSolver.convertMovesToString(gameSolver.solve(game));
 			FileWriter moveWriter = new FileWriter(outputText);
 			moveWriter.write(moves);

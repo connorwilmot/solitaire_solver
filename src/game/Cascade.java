@@ -17,6 +17,7 @@ public class Cascade implements Iterable<Card>, Cloneable{
 	}
 	
 	//format: one line where each card String is separated by a space
+	//empty cascade represented by an "x"
 	public Cascade(String sCascade) {
 		cascade = new ArrayDeque<Card>();
 		if(sCascade.charAt(0)=='x') {return;}
@@ -95,6 +96,7 @@ public class Cascade implements Iterable<Card>, Cloneable{
 		return hashNum;
 	}
 
+	//if cascade is empty it is represented with the character 'x'
 	@Override
 	public String toString() {
 		String sCascade = "";

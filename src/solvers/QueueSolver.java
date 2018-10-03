@@ -17,8 +17,8 @@ abstract public class QueueSolver extends SolitaireSolver {
 
 	private Queue<Pair<Solitaire, LinkedList<Move>>> openList;
 
-	public QueueSolver(int depth, int maxPrevious, boolean prunes) {
-		super(depth, maxPrevious, prunes);
+	public QueueSolver(int depth, boolean prunes, int maxPrevious) {
+		super(depth, prunes, maxPrevious);
 	}
 	
 	protected Queue<Pair<Solitaire, LinkedList<Move>>> getOpenList() {

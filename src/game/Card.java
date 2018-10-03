@@ -12,13 +12,18 @@ public class Card implements Cloneable{
 	private Suit suit;
 	//Jacks, Queens, and Kings are 11-13 respectively
 	private byte rank;
+	public static final int ACE = 1;
+	public static final int JACK = 11;
+	public static final int QUEEN = 12;
+	public static final int KING = 13;
 	
 	public Card(Suit suit, byte rank){
 		this.suit = suit;
 		this.rank = rank;
 	}
 	
-	//String must be in format "a1", where a is the suit, and 1 is the rank
+	//String must be in format "xn", where x is the first letter of the suit, and n is the rank(exceptions below)
+	//input is presumed to be correct
 	public Card(String sCard) {
 		char cSuit = sCard.charAt(0);
 		char cRank = sCard.charAt(1);
@@ -26,9 +31,11 @@ public class Card implements Cloneable{
 		case 'c': suit = Suit.Clubs; break;
 		case 'h': suit = Suit.Hearts; break;
 		case 's': suit = Suit.Spades; break;
-		default: suit = Suit.Diamonds; break;
+		case 'd': suit = Suit.Diamonds; break;
+		default: break;
 		}
 		switch (cRank) {
+		//special case for 10, character representing 10 is 0
 		case '0': rank = 10; break;
 		case 'J': rank = 11; break;
 		case 'Q': rank = 12; break;
@@ -80,6 +87,7 @@ public class Card implements Cloneable{
 		return (suitNum+1)*rank;
 	}
 	
+	//turns a card into a two character string representation
 	@Override
 	public String toString() {
 		String sSuit = suit.toString();

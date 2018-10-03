@@ -16,8 +16,8 @@ public class GreedyBestFirstSolver extends QueueSolver {
 
 	private SolitaireHeuristic heuristic;
 	
-	public GreedyBestFirstSolver(int maxDepth, int maxPrev, boolean prunes, SolitaireHeuristic heuristic) {
-		super(maxDepth, maxPrev, prunes);
+	public GreedyBestFirstSolver(int maxDepth, boolean prunes, int maxPrev, SolitaireHeuristic heuristic) {
+		super(maxDepth, prunes, maxPrev);
 		this.heuristic = heuristic;
 	}
 

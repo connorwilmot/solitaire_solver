@@ -11,32 +11,35 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 abstract public class SolitaireSolver {
-	
-	private boolean pruning;
+
+	//how many moves deep the solver will go (if negative, it goes forever)
 	private int maxDepth;
-	private HashSet<Solitaire> prevGames;
+	//does the solver prune?
+	private boolean pruning;
+	//number of games solver will remember
 	private int maxPrev;
+	private HashSet<Solitaire> prevGames;
 
-	public SolitaireSolver(int depth, int maxPrevious, boolean prunes) {
+	public SolitaireSolver(int depth, boolean prunes, int maxPrevious) {
 		maxDepth = depth;
-		maxPrev = maxPrevious;
 		pruning = prunes;
-	}
-
-	public boolean isPruning() {
-		return pruning;
+		maxPrev = maxPrevious;
 	}
 
 	public int getMaxDepth() {
 		return maxDepth;
 	}
 
-	protected HashSet<Solitaire> getPrevGames() {
-		return prevGames;
+	public boolean isPruning() {
+		return pruning;
 	}
 
 	public int getMaxPrev() {
 		return maxPrev;
+	}
+
+	protected HashSet<Solitaire> getPrevGames() {
+		return prevGames;
 	}
 	
 	public void setPruning(boolean pruning) {
@@ -60,23 +63,28 @@ abstract public class SolitaireSolver {
 		prevGames = new HashSet<Solitaire>(2*maxPrev, 1);
 	}
 
+	// if no winning moves it returns null
 	public LinkedList<Move> solve(Solitaire game) {
 		LinkedList<Move> winningMoves;
 		this.initialize(game);
 		if(this.getMaxDepth()<0) {
 			if(0<this.getMaxPrev()) {
 				if(this.isPruning()) {
+					//unlimited depth, remembers games seen, prunes moves
 					winningMoves = solveUnlimMemoryPruning(new Solitaire(game));
 				}
 				else {
+					//unlimited depth, remembers games seen, no pruning is done
 					winningMoves = solveUnlimMemoryNoPrun(new Solitaire(game));
 				}
 			}
 			else {
 				if(this.isPruning()) {
+					//unlimited depth, does not remember games seen, prunes moves
 					winningMoves = solveUnlimNoMemPruning(new Solitaire(game));
 				}
 				else {
+					//unlimited depth, does not remember games seen, no pruning is done
 					winningMoves = solveUnlimNoMemNoPrun(new Solitaire(game));
 				}
 			}
@@ -84,17 +92,21 @@ abstract public class SolitaireSolver {
 		else {
 			if(0<this.getMaxPrev()) {
 				if(this.isPruning()) {
+					//limited depth, remembers games seen, prunes moves
 					winningMoves = solveLimitMemoryPruning(new Solitaire(game));
 				}
 				else {
+					//limited depth, remembers games seen, no pruning is done
 					winningMoves = solveLimitMemoryNoPrun(new Solitaire(game));
 				}
 			}
 			else {
 				if(this.isPruning()) {
+					//limited depth, does not remember games seen, no pruning is done
 					winningMoves = solveLimitNoMemPruning(new Solitaire(game));
 				}
 				else {
+					//limited depth, does not remember games seen, no pruning is done
 					winningMoves = solveLimitNoMemNoPrun(new Solitaire(game));
 				}
 			}

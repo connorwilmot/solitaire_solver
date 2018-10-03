@@ -12,8 +12,8 @@ import game.Solitaire;
 
 public class DepthFirstSolver extends SolitaireSolver{
 
-	public DepthFirstSolver(int depth, int maxPrevious, boolean prunes) {
-		super(depth, maxPrevious, prunes);
+	public DepthFirstSolver(int depth, boolean prunes, int maxPrevious) {
+		super(depth, prunes, maxPrevious);
 	}
 
 	@Override

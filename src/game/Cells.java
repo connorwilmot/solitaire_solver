@@ -19,6 +19,7 @@ public class Cells implements Iterable<Card>, Cloneable{
 	}
 	
 	//format: one line where each card String is separated by a space
+	//empty cells represented by an "x"
 	public Cells(int size, String sCells) {
 		numCells = size;
 		cells = new LinkedList<Card>();
@@ -41,7 +42,7 @@ public class Cells implements Iterable<Card>, Cloneable{
 	}
 	
 	public boolean availableFreeCell() {
-		return 0 < (numCells-cells.size());
+		return cells.size() < numCells;
 	}
 	
 	public boolean isEmpty() {
@@ -54,7 +55,7 @@ public class Cells implements Iterable<Card>, Cloneable{
 	
 	//returns true if placement was successful
 	public boolean placeCard(Card card) {
-		if(cells.size()<numCells) {
+		if(availableFreeCell()) {
 			cells.add(card);
 			return true;
 		}
@@ -116,6 +117,7 @@ public class Cells implements Iterable<Card>, Cloneable{
 		return hashNum;
 	}
 
+	//if cells is empty it is represented with the character 'x'
 	@Override
 	public String toString() {
 		String sCells = "";

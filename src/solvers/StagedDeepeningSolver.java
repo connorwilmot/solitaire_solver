@@ -18,8 +18,8 @@ public class StagedDeepeningSolver extends GreedyBestFirstSolver {
 
 	private int depthOfDLS;
 	
-	public StagedDeepeningSolver(int maxDepthMult, int maxPrev, boolean prunes, int dlsDepth, SolitaireHeuristic heuristic) {
-		super(maxDepthMult*dlsDepth, maxPrev, prunes, heuristic);
+	public StagedDeepeningSolver(int maxDepthMult, boolean prunes, int maxPrev, int dlsDepth, SolitaireHeuristic heuristic) {
+		super(maxDepthMult*dlsDepth, prunes, maxPrev, heuristic);
 		depthOfDLS = dlsDepth;
 	}
 	

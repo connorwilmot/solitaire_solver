@@ -10,60 +10,61 @@ import java.util.Iterator;
 
 public class Foundation implements Iterable<Card>, Cloneable{
 
-	private ArrayDeque<Card> pile;
+	private ArrayDeque<Card> foundation;
 	
 	public Foundation() {
-		pile = new ArrayDeque<Card>();
+		foundation = new ArrayDeque<Card>();
 	}
 	
 	//format: one line where each card String is separated by a space
+	//empty foundation represented by an "x"
 	public Foundation(String sFoundation) {
-		pile = new ArrayDeque<Card>();
+		foundation = new ArrayDeque<Card>();
 		if(sFoundation.charAt(0)=='x') {return;}
 		String[] sCards = sFoundation.split(" ");
 		for(String sCard: sCards) {
 			Card card = new Card(sCard);
-			pile.add(card);
+			foundation.add(card);
 		}
 	}
 	
 	//makes a shallow copy
 	public Foundation(Foundation foundation) {
-		this.pile = new ArrayDeque<Card>(foundation.pile);
+		this.foundation = new ArrayDeque<Card>(foundation.foundation);
 	}
 	
-	public ArrayDeque<Card> getPile() {
-		return pile;
+	public ArrayDeque<Card> getFoundation() {
+		return foundation;
 	}
 
 	public void placeCard(Card card) {
-		pile.push(card);
+		foundation.push(card);
 	}
 	
 	public Card viewCard() {
-		return pile.peek();
+		return foundation.peek();
 	}
 	
 	public boolean isEmpty() {
-		return pile.isEmpty();
+		return foundation.isEmpty();
 	}
 	
 	//should only ever be used if reversing a move
 	public Card removeTopCard() {
-		return pile.pop();
+		return foundation.pop();
 	}
 
 	@Override
 	public Iterator<Card> iterator() {
-		return pile.iterator();
+		return foundation.iterator();
 	}
 	
 	//returns a deep copy
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		Foundation foundation = (Foundation)super.clone();
-		foundation.pile = (ArrayDeque<Card>) foundation.pile.clone();
-		for(Card card: foundation.pile) {
+		foundation.foundation = (ArrayDeque<Card>) foundation.foundation.clone();
+		for(Card card: foundation.foundation) {
 			card = (Card) card.clone();
 		}
 		return foundation;
@@ -72,11 +73,11 @@ public class Foundation implements Iterable<Card>, Cloneable{
 	@Override
 	public boolean equals(Object oFoundation) {
 		Foundation foundation = (Foundation) oFoundation;
-		if(this.pile.size()!=foundation.pile.size()) {
+		if(this.foundation.size()!=foundation.foundation.size()) {
 			return false;
 		}
-		Iterator<Card> foundIterator = foundation.pile.iterator();
-		for(Card card1: this.pile) {
+		Iterator<Card> foundIterator = foundation.foundation.iterator();
+		for(Card card1: this.foundation) {
 			Card card2 = foundIterator.next();
 			if(!card1.equals(card2)) {
 				return false;
@@ -89,18 +90,19 @@ public class Foundation implements Iterable<Card>, Cloneable{
 	public int hashCode() {
 		int hashNum = 0;
 		int i = 1;
-		for(Card card: pile) {
+		for(Card card: foundation) {
 			hashNum += i*card.hashCode();
 			i *= 3;
 		}
 		return hashNum;
 	}
 
+	//if cascade is empty it is represented with the character 'x'
 	@Override
 	public String toString() {
 		String sFoundation = "";
-		if(pile.isEmpty()) {return "x";}
-		for(Card card: pile) {
+		if(foundation.isEmpty()) {return "x";}
+		for(Card card: foundation) {
 			sFoundation += card.toString() + " ";
 		}
 		return sFoundation.substring(0, sFoundation.length()-1);

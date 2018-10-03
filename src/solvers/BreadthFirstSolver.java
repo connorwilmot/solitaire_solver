@@ -14,8 +14,8 @@ import structures.Pair;
 
 public class BreadthFirstSolver extends QueueSolver {
 	
-	public BreadthFirstSolver(int depth, int maxPrevious, boolean prunes) {
-		super(depth, maxPrevious, prunes);
+	public BreadthFirstSolver(int depth, boolean prunes, int maxPrevious) {
+		super(depth, prunes, maxPrevious);
 	}
 
 	@Override

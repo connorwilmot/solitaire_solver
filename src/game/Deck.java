@@ -22,6 +22,7 @@ public class Deck implements Iterable<Card>, Cloneable{
 		shuffler = new Random();
 	}
 
+	//a string representing a deck top is left, card strings separated by a blank
 	public Deck(String sDeck) {
 		deck = new ArrayDeque<Card>();
 		String[] sCards = sDeck.split(" ");
@@ -61,9 +62,11 @@ public class Deck implements Iterable<Card>, Cloneable{
 	}
 	
 	public void shuffle() {
+		//copies deck structure to cards
 		ArrayList<Card> cards = new ArrayList<Card>(deck);
 		deck = new ArrayDeque<Card>();
 		while(!cards.isEmpty()) {
+			//takes random card off deck copy 'cards' and puts it on 'deck'
 			int randInt = shuffler.nextInt(cards.size());
 			Card card = cards.remove(randInt);
 			deck.push(card);

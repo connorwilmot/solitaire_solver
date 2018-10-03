@@ -36,10 +36,11 @@ public class Solitaire implements Cloneable{
 		cells.placeCard(deck.drawCard());
 		cells.placeCard(deck.drawCard());
 	}
-	
+
+	// first line are free cells, next ten lines are cascades, and last 4 are foundations
 	public Solitaire(String text) {
+		//add error checking
 		deck = new Deck();
-		//first ten lines are cascades, next are free cells, and foundation is last
 		String[] textTokens = text.split(System.lineSeparator());
 		//this sections parses the cells
 		String sCells = textTokens[0];
@@ -57,7 +58,7 @@ public class Solitaire implements Cloneable{
 			foundations[i] = new Foundation(sFoundation);
 		}
 	}
-	
+
 	//somewhat shallow copy, does not copy cards
 	public Solitaire(Solitaire game) {
 		this.deck = new Deck(game.deck);
@@ -95,30 +96,6 @@ public class Solitaire implements Cloneable{
 		return moves;
 	}
 	
-	protected ArrayList<Move> listLegalMovesFromTab() {
-		ArrayList<Move> moves = new ArrayList<Move>();
-		for(int from=0; from<10; from++) {
-			Cascade cascade = tableau[from];
-			if(cascade.isEmpty()) {
-				continue;
-			}
-			Card card = cascade.viewTopCard();
-			//find out if can move to foundation and put in list
-			Move foundMove = findLegalMoveToFoundUsing(card, from);
-			if(foundMove!=null) {
-				moves.add(foundMove);
-			}
-			//list moves to tableau
-			moves.addAll(listLegalMovesToTabUsing(card, from));
-			//find out if can moves to cells and put in list
-			Move cellMove = findLegalMoveToCellsUsing(card, from);
-			if(cellMove!=null) {
-				moves.add(cellMove);
-			}
-		}
-		return moves;
-	}
-	
 	protected ArrayList<Move> listLegalMovesFromCells(){
 		ArrayList<Move> moves = new ArrayList<Move>();
 		int from = 10;
@@ -134,12 +111,37 @@ public class Solitaire implements Cloneable{
 		return moves;
 	}
 	
+	protected ArrayList<Move> listLegalMovesFromTab() {
+		ArrayList<Move> moves = new ArrayList<Move>();
+		for(int from=0; from<10; from++) {
+			Cascade cascade = tableau[from];
+			if(cascade.isEmpty()) {
+				continue;
+			}
+			Card card = cascade.viewTopCard();
+			//find out if card can move to foundation and put in list
+			Move foundMove = findLegalMoveToFoundUsing(card, from);
+			if(foundMove!=null) {
+				moves.add(foundMove);
+			}
+			//list moves to tableau
+			moves.addAll(listLegalMovesToTabUsing(card, from));
+			//find out if card can move to cells and put in list
+			Move cellMove = findLegalMoveToCellsUsing(card, from);
+			if(cellMove!=null) {
+				moves.add(cellMove);
+			}
+		}
+		return moves;
+	}
+	
 	private ArrayList<Move> listLegalMovesToTabUsing(Card card, int from){
 		ArrayList<Move> moves = new ArrayList<Move>();
 		for(int to=0; to<10; to++) {
 			Cascade cascade = tableau[to];
+			//If the cascade is empty we can move a king onto it
 			if(cascade.isEmpty()) {
-				if(card.getRank()==13) {
+				if(card.getRank()==Card.KING) {
 					moves.add(new Move((byte) from, card, (byte) to));
 				}
 			}
@@ -162,7 +164,7 @@ public class Solitaire implements Cloneable{
 		Foundation  foundation = foundations[card.getSuit().ordinal()];
 		if(foundation.isEmpty()) {
 			//check to see if card is an ace as nothing is on the foundation
-			if(card.getRank()==1) {
+			if(card.getRank()==Card.ACE) {
 				return new Move((byte) from, card, (byte) to);
 			}
 		}
@@ -205,6 +207,7 @@ public class Solitaire implements Cloneable{
 				return cellMove;
 			}
 		}
+		//from cascades
 		for(from=0; from<10; from++) {
 			Cascade cascade = tableau[from];
 			if(cascade.isEmpty()) {
@@ -264,11 +267,14 @@ public class Solitaire implements Cloneable{
 	private Move findLegalMoveToTabUsing(Card card, int from){
 		for(int to=0; to<10; to++) {
 			Cascade cascade = tableau[to];
+			//will only list one legal move for king to cascades
 			if(cascade.isEmpty()) {
-				if(card.getRank()==13) {
+				if(card.getRank()==Card.KING) {
 					if((10==from)) {
 						return new Move((byte) from, card, (byte) to);
 					}
+					//if king is already on cascade, we only find a move if king is not the only card on its
+					//current cascade
 					Cascade fromCasc = tableau[from];
 					if(1<fromCasc.size()) {
 						return new Move((byte) from, card, (byte) to);
@@ -369,6 +375,8 @@ public class Solitaire implements Cloneable{
 		if(!cells.equals(game.cells)) {
 			return false;
 		}
+		//cascades may be in different positions, so this method will check to see if these two games have all
+		//the same cascades
 		HashSet<Cascade> tab1 = new HashSet<Cascade>(100);
 		HashSet<Cascade> tab2 = new HashSet<Cascade>(100);
 		for(int i=0; i<10; i++) {
