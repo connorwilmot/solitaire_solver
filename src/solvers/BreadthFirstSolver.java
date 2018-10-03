@@ -1,4 +1,8 @@
 package solvers;
+/* class for a breadth first search solver. most of the implementation for this class is in its super class 
+ * QueueSolver. The only implemented method is that for creating a new openList, which returns arraydeque which will
+ * be used as a queue.
+ */
 
 import java.util.ArrayDeque;
 import java.util.LinkedList;

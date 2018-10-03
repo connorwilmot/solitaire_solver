@@ -1,6 +1,7 @@
 package game;
-
-import structures.Card;
+/* a class representing a solitaire move. A move has three fields; two fields representing where the card came from
+ * in numbers, and a field representing the card itself.
+ */
 
 public class Move {
 	
@@ -33,6 +34,7 @@ public class Move {
 		return to;
 	}
 	
+	//not implemented yet
 	public boolean isLegalMove(Solitaire game) {
 		return true;
 	}

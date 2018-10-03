@@ -1,4 +1,9 @@
 package solvers;
+/* this class basically just allows one to solve a solitaire game using the console. The first line read in must be
+ * a filepath to a textfile which has a string representing a solitaire game state in it. System will prompt for
+ * inputs such as maximum depth, amount of games remembered, and whether or not the solver will prune moves.
+ * It will print out moves to a file with each row representing a move
+ */
 
 import java.io.File;
 import java.io.FileWriter;

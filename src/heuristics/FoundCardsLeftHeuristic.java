@@ -1,10 +1,12 @@
 package heuristics;
+/* this heuristic just counts the numbers of cards not placed on the foundation.
+ */
 
 import java.util.LinkedList;
 
+import game.Foundation;
 import game.Move;
 import game.Solitaire;
-import structures.Foundation;
 import structures.Pair;
 
 public class FoundCardsLeftHeuristic extends SolitaireHeuristic {

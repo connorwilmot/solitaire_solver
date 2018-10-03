@@ -1,4 +1,7 @@
 package solvers;
+/* implentation of a solitaire solver, and more specifically QueueSolver. Uses whatever heuristic passed as an
+ * argument. Implements newOpenList by returning a priority queue ordered by heuristic
+ */
 
 import java.util.LinkedList;
 import java.util.PriorityQueue;

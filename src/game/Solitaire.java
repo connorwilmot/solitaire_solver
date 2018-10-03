@@ -1,10 +1,12 @@
 package game;
+/* class which represents a particular variant of solitaire. A solitaire game has three fields: deck, cells,
+ * tableau, and foundations. The default constructor creates a random initial set up for a solitaire game. A
+ * Solitaire game can also be initialized with a string representing the state of the game. There is also a
+ * constructor to make a somewhat shallow copy. Some of the important methods by purpose include:
+ * listing legal moves, listing a pruned list of legal moves, making a legal move, reversing a legal move.
+ * and seeing if a game is a winning state or not
+ */
 
-import structures.Card;
-import structures.Cells;
-import structures.Deck;
-import structures.Foundation;
-import structures.Cascade;
 import java.util.ArrayList;
 import java.util.HashSet;
 

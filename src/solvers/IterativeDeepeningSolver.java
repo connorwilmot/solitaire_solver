@@ -1,4 +1,8 @@
 package solvers;
+/* implementation of a solitaire solver which uses a depth limited search starting at the initial game. It
+ * repeatedly does a search from the root and increases the depth of the search. Has options to have a maximum
+ * depth for the overall search, to remember games seen, and to prune.
+ */
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,4 +1,6 @@
 package game;
+/* a class which generates a random solitaire game state and writes it to the specified text file 
+ */
 
 import java.io.File;
 import java.io.FileWriter;

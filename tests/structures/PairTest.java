@@ -1,5 +1,5 @@
 package structures;
 
-public class CellsTest {
+public class PairTest {
 
 }

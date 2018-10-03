@@ -1,4 +1,8 @@
 package solvers;
+/* base class for any class which uses a queue to keep track of states to visit next. It has no abstract methods
+ * and behavior of subclasses will only change depending on the type of queue used unless behavior of methods is
+ * overriden.
+ */
 
 import java.util.ArrayList;
 import java.util.HashSet;

@@ -1,4 +1,6 @@
 package structures;
+/* a class which implements a basic tuple class. Behavior if used for hashing is unknown
+ */
 
 public class Pair<K, V> {
 	

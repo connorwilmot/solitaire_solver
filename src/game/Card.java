@@ -1,4 +1,8 @@
-package structures;
+package game;
+/* This class represents a card in solitaire, it has three constructors, one where the suit and rank are specified,
+ * one where the card is specified with a string, and the last creates a clone from another card
+ * This class also contains an enum declaration for Suits. The card can also be converted to a two character string
+ */
 
 public class Card implements Cloneable{
 
